@@ -32,12 +32,10 @@ public class CustomerDetailsService  implements UserDetailsService {
            Customer customer=opCustomer.get();
 
            List<GrantedAuthority> authorities=new ArrayList<>();
-           return new User(customer.getEmail(),customer.getPassword(),authorities);
-
+           return new CustomerDetails(customer);
        }else{
            throw new BadCredentialsException("User Details not found with this username "+username);
        }
-//        Customer customer=opCustomer.orElseThrow(()->new UsernameNotFoundException("No Customer is available with email "+ username));
-//        return new CustomerDetails(customer);
+
     }
 }

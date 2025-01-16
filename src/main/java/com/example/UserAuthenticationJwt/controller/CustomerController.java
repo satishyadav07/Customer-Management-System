@@ -67,7 +67,6 @@ public class CustomerController {
     @GetMapping("/signIn")
     public ResponseEntity<String> getLoggedInCustomerDetailsHandler(Authentication auth){
         System.out.println(auth);
-       // Customer customer=(Customer) auth.getPrincipal();
         Customer customer=customerService.getCustomerDetailsByEmail(auth.getName());
         return new ResponseEntity<>(customer.getName()+" Logged In successfully", HttpStatus.ACCEPTED);
     }
